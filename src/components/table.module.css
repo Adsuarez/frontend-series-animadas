@@ -1,0 +1,21 @@
+.table {
+  margin: 2rem auto;
+}
+
+.table caption {
+  margin-bottom: 1rem;
+  font-size: large;
+}
+
+.tbody > tr:nth-of-type(even) {
+  background-color: rgba(255, 0, 0, 0.479);
+}
+
+.thead {
+  background-color: rgb(10, 24, 56);
+}
+
+.th,
+.td {
+  padding: 0.4rem 1rem;
+}
