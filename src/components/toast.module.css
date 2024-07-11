@@ -1,0 +1,25 @@
+.article {
+  background-color: rgb(255, 255, 255);
+  width: fit-content;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  position: absolute;
+  bottom: 0%;
+  right: 10%;
+  font-weight: 700;
+  animation: 3s ease-in-out slideup;
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(-20%);
+    opacity: 1;
+  }
+}
