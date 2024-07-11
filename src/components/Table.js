@@ -8,6 +8,7 @@ import {
   updateDirector,
 } from "@/services/directors";
 import Form from "./Form";
+import Toast from "./Toast";
 
 export default function Table({ title }) {
   const [list, setList] = useState([]);
@@ -15,6 +16,7 @@ export default function Table({ title }) {
   const [showForm, setShowForm] = useState(false);
   const [dataToSave, setDataToSave] = useState({});
   const [action, setAction] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     readDirectors().then((res) => setList(res));
@@ -22,19 +24,25 @@ export default function Table({ title }) {
 
   if (action === "update" && dataToSave.name) {
     setDataToSave({});
-    setAction("");
     updateDirector({ dataToSave }).then((res) => {
       setList(res);
       setChanges((prev) => prev + 1);
+      setShowToast(true);
     });
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
   }
 
   if (action === "create" && dataToSave.name) {
     setDataToSave({});
-    setAction("");
     createDirector({ dataToSave }).then((res) => {
       setList(res);
+      setShowToast(true);
     });
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
   }
 
   const deleteItem = async (id) => {
@@ -111,6 +119,7 @@ export default function Table({ title }) {
           </tr>
         </tfoot>
       </table>
+      {showToast && <Toast action={action}></Toast>}
     </>
   );
 }
