@@ -12,3 +12,10 @@ export const deleteDirector = async ({ id }) => {
   directors = directors.filter((director) => director.id !== id);
   return directors;
 };
+
+export const updateDirector = async ({ id, newData }) => {
+  const { name, lastname, country } = newData;
+  const index = directors.findIndex((director) => director.id === id);
+  directors[index] = { id, name, lastname, country };
+  return directors;
+};
