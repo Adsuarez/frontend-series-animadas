@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./table.module.css";
 import {
+  createDirector,
   deleteDirector,
   readDirectors,
   updateDirector,
@@ -13,16 +14,26 @@ export default function Table({ title }) {
   const [changes, setChanges] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [dataToSave, setDataToSave] = useState({});
+  const [action, setAction] = useState("");
 
   useEffect(() => {
     readDirectors().then((res) => setList(res));
   }, [changes]);
 
-  if (dataToSave.name) {
+  if (action === "update" && dataToSave.name) {
+    setDataToSave({});
+    setAction("");
     updateDirector({ dataToSave }).then((res) => {
       setList(res);
       setChanges((prev) => prev + 1);
-      setDataToSave({});
+    });
+  }
+
+  if (action === "create" && dataToSave.name) {
+    setDataToSave({});
+    setAction("");
+    createDirector({ dataToSave }).then((res) => {
+      setList(res);
     });
   }
 
@@ -68,6 +79,7 @@ export default function Table({ title }) {
                   onClick={() => {
                     setDataToSave({ id: item.id });
                     setShowForm(true);
+                    setAction("update");
                   }}
                 >
                   ✏️
@@ -85,9 +97,17 @@ export default function Table({ title }) {
         <tfoot>
           <tr>
             <th scope="row" colSpan="2">
-              FUTURO BOTÓN DE AGREGAR NUEVO
+              Nuevo director
             </th>
-            <td>33</td>
+            <td
+              className={styles.button}
+              onClick={() => {
+                setShowForm(true);
+                setAction("create");
+              }}
+            >
+              ➕
+            </td>
           </tr>
         </tfoot>
       </table>
