@@ -8,8 +8,17 @@ export default function Form({ setShowForm, setDataToSave, dataToSave }) {
 
   const save = async (event) => {
     event.preventDefault();
+
     const data = Object.fromEntries(new FormData(event.target));
-    setDataToSave({ ...dataToSave, ...data });
+
+    const isAllDataFilled = Object.values(data).every(
+      (value) => value.length > 0
+    );
+
+    if (isAllDataFilled) {
+      setDataToSave({ ...dataToSave, ...data });
+    }
+
     setShowForm(false);
   };
 
