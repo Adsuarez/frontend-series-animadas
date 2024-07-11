@@ -19,3 +19,10 @@ export const updateDirector = async ({ dataToSave }) => {
   directors[index] = { id, name, lastname, country };
   return directors;
 };
+
+export const createDirector = async ({ dataToSave }) => {
+  const id = crypto.randomUUID();
+  const { name, lastname, country } = dataToSave;
+  directors.push({ id, name, lastname, country });
+  return directors;
+};
