@@ -1,22 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./table.module.css";
-import {
-  createDirector,
-  deleteDirector,
-  readDirectors,
-  updateDirector,
-} from "@/services/directors";
+import { deleteDirector, readDirectors } from "@/services/directors";
 import Form from "./Form";
 import Toast from "./Toast";
+import {
+  createDirectorHandler,
+  updateDirectorHandler,
+} from "@/helpers/directors";
 
-export default function Table({ title }) {
+const DIRECTORS_HANDLERS = {
+  update: updateDirectorHandler,
+  create: createDirectorHandler,
+};
+
+export default function Table() {
   const [list, setList] = useState([]);
   const [changes, setChanges] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [dataToSave, setDataToSave] = useState({});
   const [action, setAction] = useState("");
   const [showToast, setShowToast] = useState(false);
+  //const pathname = window.location.pathname;
 
   useEffect(() => {
     readDirectors().then((res) => setList(res));
@@ -24,10 +29,11 @@ export default function Table({ title }) {
 
   if (action === "update" && dataToSave.name) {
     setDataToSave({});
-    updateDirector({ dataToSave }).then((res) => {
-      setList(res);
-      setChanges((prev) => prev + 1);
-      setShowToast(true);
+    DIRECTORS_HANDLERS[action]({
+      dataToSave,
+      setList,
+      setChanges,
+      setShowToast,
     });
     setTimeout(() => {
       setShowToast(false);
@@ -36,10 +42,7 @@ export default function Table({ title }) {
 
   if (action === "create" && dataToSave.name) {
     setDataToSave({});
-    createDirector({ dataToSave }).then((res) => {
-      setList(res);
-      setShowToast(true);
-    });
+    DIRECTORS_HANDLERS[action]({ dataToSave, setList, setShowToast });
     setTimeout(() => {
       setShowToast(false);
     }, 3000);
@@ -59,7 +62,6 @@ export default function Table({ title }) {
         ></Form>
       )}
       <table className={styles.table}>
-        <caption>lista de {title}</caption>
         <thead className={styles.thead}>
           <tr>
             <th className={styles.th} scope="col">
@@ -103,9 +105,7 @@ export default function Table({ title }) {
           })}
         </tbody>
         <tfoot>
-          <tr>
-            <br></br>
-          </tr>
+          <tr></tr>
           <tr
             onClick={() => {
               setShowForm(true);
