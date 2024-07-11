@@ -12,23 +12,19 @@ export default function Table({ title }) {
   const [list, setList] = useState([]);
   const [changes, setChanges] = useState(0);
   const [showForm, setShowForm] = useState(false);
+  const [dataToSave, setDataToSave] = useState({});
 
   useEffect(() => {
     readDirectors().then((res) => setList(res));
   }, [changes]);
 
-  const updateItem = async (id) => {
-    setShowForm(true);
-    const newData = {
-      name: "cameron",
-      lastname: "diaz",
-      country: "estados unidos de norte america",
-    };
-    updateDirector({ id, newData }).then((res) => {
+  if (dataToSave.name) {
+    updateDirector({ dataToSave }).then((res) => {
       setList(res);
       setChanges((prev) => prev + 1);
+      setDataToSave({});
     });
-  };
+  }
 
   const deleteItem = async (id) => {
     deleteDirector({ id }).then((res) => setList(res));
@@ -36,7 +32,13 @@ export default function Table({ title }) {
 
   return (
     <>
-      {showForm && <Form setShowForm={setShowForm}></Form>}
+      {showForm && (
+        <Form
+          setShowForm={setShowForm}
+          setDataToSave={setDataToSave}
+          dataToSave={dataToSave}
+        ></Form>
+      )}
       <table className={styles.table}>
         <caption>lista de {title}</caption>
         <thead className={styles.thead}>
@@ -63,7 +65,10 @@ export default function Table({ title }) {
                 <td className={styles.td}>{item.country}</td>
                 <td
                   className={styles.button}
-                  onClick={() => updateItem(item.id)}
+                  onClick={() => {
+                    setDataToSave({ id: item.id });
+                    setShowForm(true);
+                  }}
                 >
                   ✏️
                 </td>
