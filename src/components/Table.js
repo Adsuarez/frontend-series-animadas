@@ -104,16 +104,18 @@ export default function Table({ title }) {
         </tbody>
         <tfoot>
           <tr>
-            <th scope="row" colSpan="2">
+            <br></br>
+          </tr>
+          <tr
+            onClick={() => {
+              setShowForm(true);
+              setAction("create");
+            }}
+          >
+            <th scope="row" colSpan="3" className={styles.new_director}>
               Nuevo director
             </th>
-            <td
-              className={styles.button}
-              onClick={() => {
-                setShowForm(true);
-                setAction("create");
-              }}
-            >
+            <td colSpan="2" className={styles.new_director}>
               ➕
             </td>
           </tr>

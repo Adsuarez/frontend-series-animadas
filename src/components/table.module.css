@@ -23,3 +23,12 @@
 .button {
   cursor: pointer;
 }
+
+.new_director {
+  padding: 1rem;
+  text-align: center;
+  font-size: large;
+  height: 50px;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #8360c3, #2ebf91);
+}
