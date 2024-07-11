@@ -26,3 +26,24 @@
   font-weight: 800;
   cursor: pointer;
 }
+
+.save {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 0px;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.close:hover,
+.save:hover {
+  transform: scale(120%);
+}
