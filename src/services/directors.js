@@ -13,8 +13,8 @@ export const deleteDirector = async ({ id }) => {
   return directors;
 };
 
-export const updateDirector = async ({ id, newData }) => {
-  const { name, lastname, country } = newData;
+export const updateDirector = async ({ dataToSave }) => {
+  const { id, name, lastname, country } = dataToSave;
   const index = directors.findIndex((director) => director.id === id);
   directors[index] = { id, name, lastname, country };
   return directors;
