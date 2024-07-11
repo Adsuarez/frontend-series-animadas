@@ -14,7 +14,7 @@ export default function Navigation() {
           <Link href="/generos">Géneros</Link>
         </li>
         <li>
-          <Link href="/pais">País</Link>
+          <Link href="/pais">Países</Link>
         </li>
         <li>
           <Link href="/actores">Actores</Link>
