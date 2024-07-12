@@ -1,14 +1,17 @@
 import { deleteDirector } from "@/services/directors";
 import styles from "./table.module.css";
+import { KEYS_PER_PAGE } from "@/constants";
 
 export default function TableBody({
   list,
   setList,
-  columns,
+  pathname,
   setDataToSave,
   setShowForm,
   setAction,
 }) {
+  const columns = KEYS_PER_PAGE[pathname];
+
   const deleteItem = async (id) => {
     deleteDirector({ id }).then((res) => setList(res));
   };
