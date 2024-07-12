@@ -4,14 +4,28 @@ import styles from "./table.module.css";
 import { deleteDirector, readDirectors } from "@/services/directors";
 import Form from "./Form";
 import Toast from "./Toast";
+import { usePathname } from "next/navigation";
+
 import {
   createDirectorHandler,
   updateDirectorHandler,
 } from "@/helpers/directors";
+import { readGenres } from "@/services/genres";
 
 const DIRECTORS_HANDLERS = {
   update: updateDirectorHandler,
   create: createDirectorHandler,
+};
+
+const readHandlers = {
+  "/directores": (setList) => readDirectors().then((res) => setList(res)),
+  "/generos": (setList) => readGenres().then((res) => setList(res)),
+};
+
+const COLUMNS_TITLES_DICTIONARY = {
+  name: "Nombre",
+  lastname: "Apellido",
+  country: "País",
 };
 
 export default function Table() {
@@ -21,11 +35,12 @@ export default function Table() {
   const [dataToSave, setDataToSave] = useState({});
   const [action, setAction] = useState("");
   const [showToast, setShowToast] = useState(false);
-  //const pathname = window.location.pathname;
+  const pathname = usePathname();
+  let columns = [];
 
   useEffect(() => {
-    readDirectors().then((res) => setList(res));
-  }, [changes]);
+    readHandlers[pathname](setList);
+  }, [changes, pathname]);
 
   if (action === "update" && dataToSave.name) {
     setDataToSave({});
@@ -52,6 +67,12 @@ export default function Table() {
     deleteDirector({ id }).then((res) => setList(res));
   };
 
+  if (list.length > 0) {
+    const keys = Object.keys(list[0]);
+    columns = keys.filter((key) => key !== "id");
+    console.log({ columns });
+  }
+
   return (
     <>
       {showForm && (
@@ -64,15 +85,13 @@ export default function Table() {
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
-            <th className={styles.th} scope="col">
-              Nombre
-            </th>
-            <th className={styles.th} scope="col">
-              Apellido
-            </th>
-            <th className={styles.th} scope="col">
-              País
-            </th>
+            {columns.map((column) => {
+              return (
+                <th key={column} className={styles.th} scope="col">
+                  {COLUMNS_TITLES_DICTIONARY[column]}
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody className={styles.tbody}>
