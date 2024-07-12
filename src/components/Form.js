@@ -1,7 +1,4 @@
-import {
-  FIELDS_PER_PAGE,
-  SPANISH_TO_ENGLISH_FIELDS_DICTIONARY,
-} from "@/constants";
+import { FIELDS_PER_PAGE, SPANISH_TO_ENGLISH_FIELDS } from "@/constants";
 import styles from "./form.module.css";
 
 export default function Form({
@@ -44,10 +41,7 @@ export default function Form({
           <div key={column}>
             <label>
               {column}
-              <input
-                type="text"
-                name={SPANISH_TO_ENGLISH_FIELDS_DICTIONARY[column]}
-              />
+              <input type="text" name={SPANISH_TO_ENGLISH_FIELDS[column]} />
             </label>
           </div>
         );
