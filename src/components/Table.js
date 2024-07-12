@@ -12,26 +12,7 @@ import TableFoot from "./TableFoot";
 
 import { readDirectors } from "@/services/directors";
 import { readGenres } from "@/services/genres";
-import {
-  createDirectorHandler,
-  updateDirectorHandler,
-} from "@/helpers/directors";
-import { createGenreHandler, updateGenreHandler } from "@/helpers/genres";
-
-const directorsHandler = {
-  update: updateDirectorHandler,
-  create: createDirectorHandler,
-};
-
-const genresHandler = {
-  update: updateGenreHandler,
-  create: createGenreHandler,
-};
-
-const handlers = {
-  "/directores": directorsHandler,
-  "/generos": genresHandler,
-};
+import { updateHandler, createHandler } from "@/services/handlers";
 
 const readHandlers = {
   "/directores": (setList) => readDirectors().then((res) => setList(res)),
@@ -60,7 +41,8 @@ export default function Table() {
 
   if (action === "update" && dataToSave.name) {
     setDataToSave({});
-    handlers[pathname][action]({
+    updateHandler({
+      pathname,
       dataToSave,
       setList,
       setChanges,
@@ -71,7 +53,7 @@ export default function Table() {
 
   if (action === "create" && dataToSave.name) {
     setDataToSave({});
-    handlers[pathname][action]({ dataToSave, setList, setShowToast });
+    createHandler({ pathname, dataToSave, setList, setShowToast });
     toastManager(setShowToast);
   }
 
@@ -83,18 +65,21 @@ export default function Table() {
   return (
     <>
       {showForm && (
-        <Form
-          setShowForm={setShowForm}
-          setDataToSave={setDataToSave}
-          dataToSave={dataToSave}
-          columns={columns}
-        ></Form>
+        <article className={styles.formContainer}>
+          <Form
+            setShowForm={setShowForm}
+            setDataToSave={setDataToSave}
+            dataToSave={dataToSave}
+            columns={columns}
+          ></Form>
+        </article>
       )}
       <table className={styles.table}>
         <TableHead columns={columns} />
         <TableBody
           columns={columns}
           list={list}
+          setList={setList}
           setAction={setAction}
           setDataToSave={setDataToSave}
           setShowForm={setShowForm}
