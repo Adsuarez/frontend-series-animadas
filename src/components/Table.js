@@ -70,7 +70,6 @@ export default function Table() {
   if (list.length > 0) {
     const keys = Object.keys(list[0]);
     columns = keys.filter((key) => key !== "id");
-    console.log({ columns });
   }
 
   return (
@@ -98,11 +97,13 @@ export default function Table() {
           {list.map((item) => {
             return (
               <tr key={item.id}>
-                <th className={styles.th} scope="row">
-                  {item.name}
-                </th>
-                <td className={styles.td}>{item.lastname}</td>
-                <td className={styles.td}>{item.country}</td>
+                {columns.map((column) => {
+                  return (
+                    <td key={column} className={styles.td}>
+                      {item[column]}
+                    </td>
+                  );
+                })}
                 <td
                   className={styles.button}
                   onClick={() => {
