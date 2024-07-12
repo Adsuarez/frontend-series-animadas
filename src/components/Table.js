@@ -1,27 +1,36 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from "./table.module.css";
-import { readDirectors } from "@/services/directors";
-import Form from "./Form";
-import Toast from "./Toast";
 import { usePathname } from "next/navigation";
 
+import styles from "./table.module.css";
+
+import Form from "./Form";
+import Toast from "./Toast";
+import TableHead from "./TableHead";
+import TableBody from "./TableBody";
+import TableFoot from "./TableFoot";
+
+import { readDirectors } from "@/services/directors";
+import { readGenres } from "@/services/genres";
 import {
   createDirectorHandler,
   updateDirectorHandler,
 } from "@/helpers/directors";
-import { readGenres } from "@/services/genres";
-import TableHead from "./TableHead";
-import TableBody from "./TableBody";
-import TableFoot from "./TableFoot";
+import { createGenreHandler, updateGenreHandler } from "@/helpers/genres";
 
 const directorsHandler = {
   update: updateDirectorHandler,
   create: createDirectorHandler,
 };
 
+const genresHandler = {
+  update: updateGenreHandler,
+  create: createGenreHandler,
+};
+
 const handlers = {
   "/directores": directorsHandler,
+  "/generos": genresHandler,
 };
 
 const readHandlers = {
