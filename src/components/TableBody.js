@@ -1,6 +1,6 @@
-import { deleteDirector } from "@/services/directors";
 import styles from "./table.module.css";
 import { KEYS_PER_PAGE } from "@/constants";
+import { deleteHandler } from "@/services/handlers";
 
 export default function TableBody({
   list,
@@ -11,10 +11,6 @@ export default function TableBody({
   setAction,
 }) {
   const columns = KEYS_PER_PAGE[pathname];
-
-  const deleteItem = async (id) => {
-    deleteDirector({ id }).then((res) => setList(res));
-  };
 
   return (
     <tbody className={styles.tbody}>
@@ -38,7 +34,10 @@ export default function TableBody({
             >
               ✏️
             </td>
-            <td className={styles.button} onClick={() => deleteItem(item.id)}>
+            <td
+              className={styles.button}
+              onClick={() => deleteHandler({ id: item.id, pathname, setList })}
+            >
               ❌
             </td>
           </tr>
