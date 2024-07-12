@@ -15,13 +15,13 @@ export default function Navigation() {
           <Link href={ROUTES.genres}>Géneros</Link>
         </li>
         <li>
-          <Link href="/pais">Países</Link>
+          <Link href={ROUTES.countries}>Países</Link>
         </li>
         <li>
-          <Link href="/actores">Actores</Link>
+          <Link href={ROUTES.actors}>Actores</Link>
         </li>
         <li>
-          <Link href="/peliculas">Películas</Link>
+          <Link href={ROUTES.movies}>Películas</Link>
         </li>
       </ul>
     </nav>
