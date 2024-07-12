@@ -32,3 +32,8 @@
   cursor: pointer;
   background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
+
+.formContainer {
+  display: grid;
+  place-items: center;
+}
