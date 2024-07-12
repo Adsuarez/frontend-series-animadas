@@ -33,7 +33,6 @@ export default function Table() {
   const [action, setAction] = useState("");
   const [showToast, setShowToast] = useState(false);
   const pathname = usePathname();
-  let columns = [];
 
   useEffect(() => {
     readHandlers[pathname](setList);
@@ -57,11 +56,6 @@ export default function Table() {
     toastManager(setShowToast);
   }
 
-  if (list.length > 0) {
-    const keys = Object.keys(list[0]);
-    columns = keys.filter((key) => key !== "id");
-  }
-
   return (
     <>
       {showForm && (
@@ -70,14 +64,14 @@ export default function Table() {
             setShowForm={setShowForm}
             setDataToSave={setDataToSave}
             dataToSave={dataToSave}
-            columns={columns}
+            pathname={pathname}
           ></Form>
         </article>
       )}
       <table className={styles.table}>
-        <TableHead columns={columns} />
+        <TableHead pathname={pathname} />
         <TableBody
-          columns={columns}
+          pathname={pathname}
           list={list}
           setList={setList}
           setAction={setAction}
