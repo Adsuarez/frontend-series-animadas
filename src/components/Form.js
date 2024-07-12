@@ -1,6 +1,12 @@
+import { COLUMNS_TITLES_DICTIONARY } from "@/constants";
 import styles from "./form.module.css";
 
-export default function Form({ setShowForm, setDataToSave, dataToSave }) {
+export default function Form({
+  setShowForm,
+  setDataToSave,
+  dataToSave,
+  columns,
+}) {
   const close = async (event) => {
     event.preventDefault();
     setShowForm(false);
@@ -29,25 +35,16 @@ export default function Form({ setShowForm, setDataToSave, dataToSave }) {
       className={styles.form}
       onSubmit={(event) => save(event)}
     >
-      <div>
-        <label>
-          Nombre
-          <input type="text" name="name" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Apellido
-          <input type="text" name="lastname" />
-        </label>
-      </div>
-      <div>
-        <label>
-          País
-          <input type="text" name="country" />
-        </label>
-      </div>
-
+      {columns.map((column) => {
+        return (
+          <div key={column}>
+            <label>
+              {COLUMNS_TITLES_DICTIONARY[column]}
+              <input type="text" name={column} />
+            </label>
+          </div>
+        );
+      })}
       <button className={styles.close} onClick={(event) => close(event)}>
         X
       </button>
