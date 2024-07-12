@@ -79,9 +79,13 @@ export default function Table() {
           setDataToSave={setDataToSave}
           setShowForm={setShowForm}
         />
-        <TableFoot setAction={setAction} setShowForm={setShowForm} />
+        <TableFoot
+          setAction={setAction}
+          setShowForm={setShowForm}
+          pathname={pathname}
+        />
       </table>
-      {showToast && <Toast action={action}></Toast>}
+      {showToast && <Toast action={action} pathname={pathname}></Toast>}
     </>
   );
 }
