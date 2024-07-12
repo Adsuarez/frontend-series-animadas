@@ -5,21 +5,21 @@ import { ROUTES } from "@/constants";
 const serviceUpdateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
     updateDirector({ dataToSave }).then((res) => res),
-  "/generos": async ({ dataToSave }) =>
+  [ROUTES.genres]: async ({ dataToSave }) =>
     updateGenre({ dataToSave }).then((res) => res),
 };
 
 const serviceCreateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
     createDirector({ dataToSave }).then((res) => res),
-  "/generos": async ({ dataToSave }) =>
+  [ROUTES.genres]: async ({ dataToSave }) =>
     createGenre({ dataToSave }).then((res) => res),
 };
 
 const serviceDeleteSelector = {
   [ROUTES.directors]: async ({ id }) =>
     deleteDirector({ id }).then((res) => res),
-  "/generos": async ({ id }) => deleteGenre({ id }).then((res) => res),
+  [ROUTES.genres]: async ({ id }) => deleteGenre({ id }).then((res) => res),
 };
 
 export const updateHandler = async ({

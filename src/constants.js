@@ -24,10 +24,10 @@ export const FIELDS_PER_PAGE = {
     ENGLISH_TO_SPANISH_FIELDS.lastname,
     ENGLISH_TO_SPANISH_FIELDS.country,
   ],
-  "/generos": [ENGLISH_TO_SPANISH_FIELDS.name],
+  [ROUTES.genres]: [ENGLISH_TO_SPANISH_FIELDS.name],
 };
 
 export const KEYS_PER_PAGE = {
   [ROUTES.directors]: ["name", "lastname", "country"],
-  "/generos": ["name"],
+  [ROUTES.genres]: ["name"],
 };

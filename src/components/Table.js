@@ -17,7 +17,7 @@ import { ROUTES } from "@/constants";
 
 const readHandlers = {
   [ROUTES.directors]: (setList) => readDirectors().then((res) => setList(res)),
-  "/generos": (setList) => readGenres().then((res) => setList(res)),
+  [ROUTES.genres]: (setList) => readGenres().then((res) => setList(res)),
 };
 
 const toastManager = (setShowToast) => {

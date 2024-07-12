@@ -12,7 +12,7 @@ export default function Navigation() {
           <Link href={ROUTES.directors}>Directores</Link>
         </li>
         <li>
-          <Link href="/generos">Géneros</Link>
+          <Link href={ROUTES.genres}>Géneros</Link>
         </li>
         <li>
           <Link href="/pais">Países</Link>
