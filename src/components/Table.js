@@ -78,6 +78,7 @@ export default function Table() {
           setShowForm={setShowForm}
           setDataToSave={setDataToSave}
           dataToSave={dataToSave}
+          columns={columns}
         ></Form>
       )}
       <table className={styles.table}>
