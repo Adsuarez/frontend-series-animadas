@@ -1,22 +1,24 @@
 import { createGenre, deleteGenre, updateGenre } from "./genres";
 import { createDirector, deleteDirector, updateDirector } from "./directors";
+import { ROUTES } from "@/constants";
 
 const serviceUpdateSelector = {
-  "/directores": async ({ dataToSave }) =>
+  [ROUTES.directors]: async ({ dataToSave }) =>
     updateDirector({ dataToSave }).then((res) => res),
   "/generos": async ({ dataToSave }) =>
     updateGenre({ dataToSave }).then((res) => res),
 };
 
 const serviceCreateSelector = {
-  "/directores": async ({ dataToSave }) =>
+  [ROUTES.directors]: async ({ dataToSave }) =>
     createDirector({ dataToSave }).then((res) => res),
   "/generos": async ({ dataToSave }) =>
     createGenre({ dataToSave }).then((res) => res),
 };
 
 const serviceDeleteSelector = {
-  "/directores": async ({ id }) => deleteDirector({ id }).then((res) => res),
+  [ROUTES.directors]: async ({ id }) =>
+    deleteDirector({ id }).then((res) => res),
   "/generos": async ({ id }) => deleteGenre({ id }).then((res) => res),
 };
 

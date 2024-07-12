@@ -13,9 +13,10 @@ import TableFoot from "./TableFoot";
 import { readDirectors } from "@/services/directors";
 import { readGenres } from "@/services/genres";
 import { updateHandler, createHandler } from "@/services/handlers";
+import { ROUTES } from "@/constants";
 
 const readHandlers = {
-  "/directores": (setList) => readDirectors().then((res) => setList(res)),
+  [ROUTES.directors]: (setList) => readDirectors().then((res) => setList(res)),
   "/generos": (setList) => readGenres().then((res) => setList(res)),
 };
 

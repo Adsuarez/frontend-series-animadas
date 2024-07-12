@@ -10,8 +10,16 @@ export const SPANISH_TO_ENGLISH_FIELDS = {
   [ENGLISH_TO_SPANISH_FIELDS.country]: "country",
 };
 
+export const ROUTES = {
+  directors: "/directores",
+  genres: "/generos",
+  countries: "/paises",
+  actors: "/actores",
+  movies: "/peliculas",
+};
+
 export const FIELDS_PER_PAGE = {
-  "/directores": [
+  [ROUTES.directors]: [
     ENGLISH_TO_SPANISH_FIELDS.name,
     ENGLISH_TO_SPANISH_FIELDS.lastname,
     ENGLISH_TO_SPANISH_FIELDS.country,
@@ -20,6 +28,6 @@ export const FIELDS_PER_PAGE = {
 };
 
 export const KEYS_PER_PAGE = {
-  "/directores": ["name", "lastname", "country"],
+  [ROUTES.directors]: ["name", "lastname", "country"],
   "/generos": ["name"],
 };

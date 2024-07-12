@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants";
 import Link from "next/link";
 
 export default function Navigation() {
@@ -8,7 +9,7 @@ export default function Navigation() {
           <Link href="/">Inicio</Link>
         </li>
         <li>
-          <Link href="/directores">Directores</Link>
+          <Link href={ROUTES.directors}>Directores</Link>
         </li>
         <li>
           <Link href="/generos">Géneros</Link>
