@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./table.module.css";
-import { deleteDirector, readDirectors } from "@/services/directors";
+import { readDirectors } from "@/services/directors";
 import Form from "./Form";
 import Toast from "./Toast";
 import { usePathname } from "next/navigation";
@@ -11,10 +11,17 @@ import {
   updateDirectorHandler,
 } from "@/helpers/directors";
 import { readGenres } from "@/services/genres";
+import TableHead from "./TableHead";
+import TableBody from "./TableBody";
+import TableFoot from "./TableFoot";
 
-const DIRECTORS_HANDLERS = {
+const directorsHandler = {
   update: updateDirectorHandler,
   create: createDirectorHandler,
+};
+
+const handlers = {
+  "/directores": directorsHandler,
 };
 
 const readHandlers = {
@@ -22,10 +29,10 @@ const readHandlers = {
   "/generos": (setList) => readGenres().then((res) => setList(res)),
 };
 
-const COLUMNS_TITLES_DICTIONARY = {
-  name: "Nombre",
-  lastname: "Apellido",
-  country: "País",
+const toastManager = (setShowToast) => {
+  setTimeout(() => {
+    setShowToast(false);
+  }, 3000);
 };
 
 export default function Table() {
@@ -44,28 +51,20 @@ export default function Table() {
 
   if (action === "update" && dataToSave.name) {
     setDataToSave({});
-    DIRECTORS_HANDLERS[action]({
+    handlers[pathname][action]({
       dataToSave,
       setList,
       setChanges,
       setShowToast,
     });
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
+    toastManager(setShowToast);
   }
 
   if (action === "create" && dataToSave.name) {
     setDataToSave({});
-    DIRECTORS_HANDLERS[action]({ dataToSave, setList, setShowToast });
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
+    handlers[pathname][action]({ dataToSave, setList, setShowToast });
+    toastManager(setShowToast);
   }
-
-  const deleteItem = async (id) => {
-    deleteDirector({ id }).then((res) => setList(res));
-  };
 
   if (list.length > 0) {
     const keys = Object.keys(list[0]);
@@ -82,64 +81,15 @@ export default function Table() {
         ></Form>
       )}
       <table className={styles.table}>
-        <thead className={styles.thead}>
-          <tr>
-            {columns.map((column) => {
-              return (
-                <th key={column} className={styles.th} scope="col">
-                  {COLUMNS_TITLES_DICTIONARY[column]}
-                </th>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody className={styles.tbody}>
-          {list.map((item) => {
-            return (
-              <tr key={item.id}>
-                {columns.map((column) => {
-                  return (
-                    <td key={column} className={styles.td}>
-                      {item[column]}
-                    </td>
-                  );
-                })}
-                <td
-                  className={styles.button}
-                  onClick={() => {
-                    setDataToSave({ id: item.id });
-                    setShowForm(true);
-                    setAction("update");
-                  }}
-                >
-                  ✏️
-                </td>
-                <td
-                  className={styles.button}
-                  onClick={() => deleteItem(item.id)}
-                >
-                  ❌
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-        <tfoot>
-          <tr></tr>
-          <tr
-            onClick={() => {
-              setShowForm(true);
-              setAction("create");
-            }}
-          >
-            <th scope="row" colSpan="3" className={styles.new_director}>
-              Nuevo director
-            </th>
-            <td colSpan="2" className={styles.new_director}>
-              ➕
-            </td>
-          </tr>
-        </tfoot>
+        <TableHead columns={columns} />
+        <TableBody
+          columns={columns}
+          list={list}
+          setAction={setAction}
+          setDataToSave={setDataToSave}
+          setShowForm={setShowForm}
+        />
+        <TableFoot setAction={setAction} setShowForm={setShowForm} />
       </table>
       {showToast && <Toast action={action}></Toast>}
     </>
