@@ -1,6 +1,11 @@
+import { ROUTES } from "@/constants";
 import styles from "./table.module.css";
+const BUTTON_MESAGGES_PER_PAGE = {
+  [ROUTES.directors]: "Nuevo director",
+  [ROUTES.genres]: "Nuevo género",
+};
 
-export default function TableFoot({ setShowForm, setAction }) {
+export default function TableFoot({ setShowForm, setAction, pathname }) {
   return (
     <tfoot>
       <tr></tr>
@@ -11,7 +16,7 @@ export default function TableFoot({ setShowForm, setAction }) {
         }}
       >
         <th scope="row" colSpan="3" className={styles.new_director}>
-          Nuevo director
+          {BUTTON_MESAGGES_PER_PAGE[pathname]}
         </th>
         <td colSpan="2" className={styles.new_director}>
           ➕
