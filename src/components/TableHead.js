@@ -1,10 +1,5 @@
+import { COLUMNS_TITLES_DICTIONARY } from "@/constants";
 import styles from "./table.module.css";
-
-const COLUMNS_TITLES_DICTIONARY = {
-  name: "Nombre",
-  lastname: "Apellido",
-  country: "País",
-};
 
 export default function TableHead({ columns }) {
   return (
