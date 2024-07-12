@@ -1,7 +1,9 @@
+import { deleteDirector } from "@/services/directors";
 import styles from "./table.module.css";
 
 export default function TableBody({
   list,
+  setList,
   columns,
   setDataToSave,
   setShowForm,
