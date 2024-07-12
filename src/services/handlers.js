@@ -1,5 +1,5 @@
-import { createGenre, updateGenre } from "./genres";
-import { createDirector, updateDirector } from "./directors";
+import { createGenre, deleteGenre, updateGenre } from "./genres";
+import { createDirector, deleteDirector, updateDirector } from "./directors";
 
 const serviceUpdateSelector = {
   "/directores": async ({ dataToSave }) =>
@@ -13,6 +13,11 @@ const serviceCreateSelector = {
     createDirector({ dataToSave }).then((res) => res),
   "/generos": async ({ dataToSave }) =>
     createGenre({ dataToSave }).then((res) => res),
+};
+
+const serviceDeleteSelector = {
+  "/directores": async ({ id }) => deleteDirector({ id }).then((res) => res),
+  "/generos": async ({ id }) => deleteGenre({ id }).then((res) => res),
 };
 
 export const updateHandler = async ({
@@ -39,4 +44,8 @@ export const createHandler = async ({
     setList(res);
     setShowToast(true);
   });
+};
+
+export const deleteHandler = async ({ pathname, setList, id }) => {
+  serviceDeleteSelector[pathname]({ id }).then((res) => setList(res));
 };
