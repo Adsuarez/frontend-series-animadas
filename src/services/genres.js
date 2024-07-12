@@ -14,15 +14,15 @@ export const deleteGenre = async ({ id }) => {
 };
 
 export const updateGenre = async ({ dataToSave }) => {
-  const { id, name, lastname, country } = dataToSave;
+  const { id, name } = dataToSave;
   const index = genres.findIndex((genre) => genre.id === id);
-  genres[index] = { id, name, lastname, country };
+  genres[index] = { id, name };
   return genres;
 };
 
 export const createGenre = async ({ dataToSave }) => {
   const id = crypto.randomUUID();
-  const { name, lastname, country } = dataToSave;
-  genres.push({ id, name, lastname, country });
+  const { name } = dataToSave;
+  genres.push({ id, name });
   return genres;
 };
