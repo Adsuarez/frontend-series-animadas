@@ -6,13 +6,15 @@ import {
   readDirectors,
   updateDirector,
 } from "./directors";
-import { readMovies } from "./movies";
+import { createMovie, deleteMovie, readMovies, updateMovie } from "./movies";
 
 const serviceCreateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
     createDirector({ dataToSave }).then((res) => res),
   [ROUTES.genres]: async ({ dataToSave }) =>
     createGenre({ dataToSave }).then((res) => res),
+  [ROUTES.movies]: async ({ dataToSave }) =>
+    createMovie({ dataToSave }).then((res) => res),
 };
 
 const serviceReadSelector = {
@@ -26,12 +28,15 @@ const serviceUpdateSelector = {
     updateDirector({ dataToSave }).then((res) => res),
   [ROUTES.genres]: async ({ dataToSave }) =>
     updateGenre({ dataToSave }).then((res) => res),
+  [ROUTES.movies]: async ({ dataToSave }) =>
+    updateMovie({ dataToSave }).then((res) => res),
 };
 
 const serviceDeleteSelector = {
   [ROUTES.directors]: async ({ id }) =>
     deleteDirector({ id }).then((res) => res),
   [ROUTES.genres]: async ({ id }) => deleteGenre({ id }).then((res) => res),
+  [ROUTES.movies]: async ({ id }) => deleteMovie({ id }).then((res) => res),
 };
 
 export const createHandler = async ({
