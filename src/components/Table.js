@@ -10,15 +10,7 @@ import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import TableFoot from "./TableFoot";
 
-import { readDirectors } from "@/services/directors";
-import { readGenres } from "@/services/genres";
-import { updateHandler, createHandler } from "@/services/handlers";
-import { ROUTES } from "@/constants";
-
-const readHandlers = {
-  [ROUTES.directors]: (setList) => readDirectors().then((res) => setList(res)),
-  [ROUTES.genres]: (setList) => readGenres().then((res) => setList(res)),
-};
+import { createHandler, readHandler, updateHandler } from "@/services/handlers";
 
 const toastManager = (setShowToast) => {
   setTimeout(() => {
@@ -36,7 +28,7 @@ export default function Table() {
   const pathname = usePathname();
 
   useEffect(() => {
-    readHandlers[pathname](setList);
+    readHandler({ pathname, setList });
   }, [changes, pathname]);
 
   if (action === "update" && dataToSave.name) {
