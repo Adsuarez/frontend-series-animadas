@@ -1,9 +1,5 @@
-import { ROUTES } from "@/constants";
+import { BUTTON_MESAGGES_PER_PAGE } from "@/constants";
 import styles from "./table.module.css";
-const BUTTON_MESAGGES_PER_PAGE = {
-  [ROUTES.directors]: "Nuevo director",
-  [ROUTES.genres]: "Nuevo género",
-};
 
 export default function TableFoot({ setShowForm, setAction, pathname }) {
   return (
