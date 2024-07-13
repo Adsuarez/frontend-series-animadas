@@ -64,3 +64,11 @@ export const KEYS_PER_PAGE = {
     "trailerUrl",
   ],
 };
+
+export const BUTTON_MESAGGES_PER_PAGE = {
+  [ROUTES.directors]: "Nuevo director",
+  [ROUTES.genres]: "Nuevo género",
+  [ROUTES.countries]: "Nuevo País",
+  [ROUTES.actors]: "Nuevo actor",
+  [ROUTES.movies]: "Nueva película",
+};
