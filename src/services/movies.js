@@ -9,8 +9,8 @@ let movies = [
     review:
       "Es una historia de comedia entre un gato (Tom) que quiere comerce un ratón (Jerry)",
     imageUrl:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmoviesanywhere.com%2Fmovie%2Ftom-and-jerry-2020&psig=AOvVaw1j3vzWs3X22z64iLKlFMGm&ust=1720970923410000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMDCnrSqpIcDFQAAAAAdAAAAABAh",
-    trailerUrl: `<iframe width="560" height="315" src="https://www.youtube.com/embed/kP9TfCWaQT4?si=xbBQcO8-A_44XgPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      "https://images.moviesanywhere.com/e0708d2e8ab020cfa55372e8949bc385/b9ce327f-8e8f-4851-a0eb-2e1ce48e7ceb.webp?h=375&resize=fit&w=250",
+    trailerUrl: `<iframe width="250" height="139" src="https://www.youtube.com/embed/kP9TfCWaQT4?si=xbBQcO8-A_44XgPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
   },
 ];
 
