@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -16,21 +14,24 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# NOTA:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Página autorizada para extraer las imágenes de portada:
 
-## Learn More
+https://moviesanywhere.com/home
 
-To learn more about Next.js, take a look at the following resources:
+Pasos para incluir el link de la imágen de internet:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Visitar el link y dar click en el ícono de la lupa para buscar:
+   ![Screenshot de la página principal](./insert-image-url-instructions/image-1.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Escribir en la barra de búsqueda la película que se desea visualizar
+   ![screenshot de la página de búsqueda](./insert-image-url-instructions/image-2.png)
 
-## Deploy on Vercel
+3. Dar click sobre la película que se desea ver
+   ![Visualización del resultado después de clickear sobre la imágen deseada](./insert-image-url-instructions/image-3.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. dar click sobre la imágen pequeña de la portada, y seleccionar la opción Copiar dirección de la imágen
+   ![opción para copiar la dirección de la imágen](./insert-image-url-instructions/image-4.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. ¡ Y listo! al agregar o editar una película este es el enlace que debes pegar en el campo de "Portada"
