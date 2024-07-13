@@ -1,5 +1,10 @@
-import { createGenre, deleteGenre, updateGenre } from "./genres";
-import { createDirector, deleteDirector, updateDirector } from "./directors";
+import { createGenre, deleteGenre, readGenres, updateGenre } from "./genres";
+import {
+  createDirector,
+  deleteDirector,
+  readDirectors,
+  updateDirector,
+} from "./directors";
 import { ROUTES } from "@/constants";
 
 const serviceCreateSelector = {
@@ -7,6 +12,11 @@ const serviceCreateSelector = {
     createDirector({ dataToSave }).then((res) => res),
   [ROUTES.genres]: async ({ dataToSave }) =>
     createGenre({ dataToSave }).then((res) => res),
+};
+
+const serviceReadSelector = {
+  [ROUTES.directors]: async () => readDirectors().then((res) => res),
+  [ROUTES.genres]: async () => readGenres().then((res) => res),
 };
 
 const serviceUpdateSelector = {
@@ -32,6 +42,10 @@ export const createHandler = async ({
     setList(res);
     setShowToast(true);
   });
+};
+
+export const readHandler = async ({ pathname, setList }) => {
+  serviceReadSelector[pathname]().then((res) => setList(res));
 };
 
 export const updateHandler = async ({
