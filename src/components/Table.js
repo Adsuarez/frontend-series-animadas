@@ -54,6 +54,7 @@ export default function Table() {
       {showForm && (
         <article className={styles.formContainer}>
           <Form
+            list={list}
             setShowForm={setShowForm}
             setDataToSave={setDataToSave}
             dataToSave={dataToSave}
