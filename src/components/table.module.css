@@ -17,8 +17,11 @@
 
 .th,
 .td {
-  padding: 0.4rem 1rem;
+  padding: 10px 5px;
+  max-width: calc(250px + 10px);
 }
+/*TODO: define constant to 250px for max-width*/
+/*TODO: implement function to ensure video frame from embed url contain width=250px and height=139px*/
 
 .button {
   cursor: pointer;
