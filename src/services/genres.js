@@ -4,12 +4,14 @@ let genres = [
   { id: "C", name: "aventura" },
 ];
 
-export const readGenres = async () => {
+export const createGenre = async ({ dataToSave }) => {
+  const id = crypto.randomUUID();
+  const { name } = dataToSave;
+  genres.push({ id, name });
   return genres;
 };
 
-export const deleteGenre = async ({ id }) => {
-  genres = genres.filter((genre) => genre.id !== id);
+export const readGenres = async () => {
   return genres;
 };
 
@@ -20,9 +22,7 @@ export const updateGenre = async ({ dataToSave }) => {
   return genres;
 };
 
-export const createGenre = async ({ dataToSave }) => {
-  const id = crypto.randomUUID();
-  const { name } = dataToSave;
-  genres.push({ id, name });
+export const deleteGenre = async ({ id }) => {
+  genres = genres.filter((genre) => genre.id !== id);
   return genres;
 };

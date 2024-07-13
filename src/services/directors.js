@@ -4,12 +4,14 @@ let directors = [
   { id: "C", name: "pedro", lastname: "guaca", country: "mexico" },
 ];
 
-export const readDirectors = async () => {
+export const createDirector = async ({ dataToSave }) => {
+  const id = crypto.randomUUID();
+  const { name, lastname, country } = dataToSave;
+  directors.push({ id, name, lastname, country });
   return directors;
 };
 
-export const deleteDirector = async ({ id }) => {
-  directors = directors.filter((director) => director.id !== id);
+export const readDirectors = async () => {
   return directors;
 };
 
@@ -20,9 +22,7 @@ export const updateDirector = async ({ dataToSave }) => {
   return directors;
 };
 
-export const createDirector = async ({ dataToSave }) => {
-  const id = crypto.randomUUID();
-  const { name, lastname, country } = dataToSave;
-  directors.push({ id, name, lastname, country });
+export const deleteDirector = async ({ id }) => {
+  directors = directors.filter((director) => director.id !== id);
   return directors;
 };
