@@ -15,10 +15,10 @@ export default function TableFoot({ setShowForm, setAction, pathname }) {
           setAction("create");
         }}
       >
-        <th scope="row" colSpan="3" className={styles.new_director}>
+        <th scope="row" colSpan="3" className={styles.addDirector}>
           {BUTTON_MESAGGES_PER_PAGE[pathname]}
         </th>
-        <td colSpan="2" className={styles.new_director}>
+        <td colSpan="2" className={styles.addDirector}>
           ➕
         </td>
       </tr>
