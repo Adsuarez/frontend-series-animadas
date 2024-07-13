@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants";
 import { createGenre, deleteGenre, readGenres, updateGenre } from "./genres";
 import {
   createDirector,
@@ -5,7 +6,7 @@ import {
   readDirectors,
   updateDirector,
 } from "./directors";
-import { ROUTES } from "@/constants";
+import { readMovies } from "./movies";
 
 const serviceCreateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
@@ -17,6 +18,7 @@ const serviceCreateSelector = {
 const serviceReadSelector = {
   [ROUTES.directors]: async () => readDirectors().then((res) => res),
   [ROUTES.genres]: async () => readGenres().then((res) => res),
+  [ROUTES.movies]: async () => readMovies().then((res) => res),
 };
 
 const serviceUpdateSelector = {
