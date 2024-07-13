@@ -18,6 +18,11 @@
 .th,
 .td {
   padding: 10px 5px;
+}
+
+.td {
+  max-height: 139px;
+  min-width: 100px;
   max-width: calc(250px + 10px);
 }
 /*TODO: define constant to 250px for max-width*/
