@@ -49,6 +49,7 @@ export const FIELDS_PER_PAGE = {
   ],
 };
 
+//TODO: use english constans to construct this constant
 export const KEYS_PER_PAGE = {
   [ROUTES.directors]: ["name", "lastname", "country"],
   [ROUTES.genres]: ["name"],
@@ -56,8 +57,8 @@ export const KEYS_PER_PAGE = {
     "name",
     "country",
     "genre",
-    "Actores",
-    "Director",
+    "actors",
+    "director",
     "review",
     "imageUrl",
     "trailerUrl",
