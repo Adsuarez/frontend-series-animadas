@@ -117,3 +117,7 @@ nav ul li:hover {
   filter: drop-shadow(0px 10px 10px white);
   cursor: pointer;
 }
+
+.titlePage {
+  text-align: center;
+}
