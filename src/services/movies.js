@@ -1,4 +1,3 @@
-//TODO: create function to replace automaticly with and height of all videos embeded from youtube
 let movies = [
   {
     id: "A",

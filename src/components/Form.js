@@ -47,6 +47,14 @@ export default function Form({
     const isAllDataFilled = Object.values(data).every(
       (value) => value.length > 0
     );
+
+    if (data.trailerUrl) {
+      const widthRegex = /width="([0-9]+)"/g;
+      data.trailerUrl = data.trailerUrl.replace(widthRegex, `width="250"`);
+      const heigthRegex = /height="([0-9]+)"/g;
+      data.trailerUrl = data.trailerUrl.replace(heigthRegex, `height="139"`);
+    }
+
     if (isAllDataFilled) {
       setDataToSave({ ...dataToSave, ...data });
     }
