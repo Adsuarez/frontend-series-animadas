@@ -1,10 +1,10 @@
 import Table from "@/components/Table";
 import "../globals.css";
 
-export default function Movies() {
+export default function MoviePage() {
   return (
     <article>
-      <h1 className="titlePage">Lista de películas</h1>
+      <h1 className="titlePage">LISTA DE PELÍCULAS</h1>
       <Table />
     </article>
   );
