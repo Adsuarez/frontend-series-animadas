@@ -1,62 +1,64 @@
-import { ROUTES } from "@/constants";
-import { createGenre, deleteGenre, readGenres, updateGenre } from "./genres";
-import {
-  createDirector,
-  deleteDirector,
-  readDirectors,
-  updateDirector,
-} from "./directors";
-import { createMovie, deleteMovie, readMovies, updateMovie } from "./movies";
-import {
-  createCountry,
-  deleteCountry,
-  readCountries,
-  updateCountry,
-} from "./countries";
-import { createActor, deleteActor, readActors, updateActor } from "./actors";
+import { PETITIONERS, ROUTES } from "@/constants";
+import { create, read, remove, update } from "./services";
 
 const serviceCreateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
-    createDirector({ dataToSave }).then((res) => res),
+    create({ petitioner: PETITIONERS.directors, dataToSave }).then(
+      (res) => res
+    ),
   [ROUTES.genres]: async ({ dataToSave }) =>
-    createGenre({ dataToSave }).then((res) => res),
+    create({ petitioner: PETITIONERS.genres, dataToSave }).then((res) => res),
   [ROUTES.movies]: async ({ dataToSave }) =>
-    createMovie({ dataToSave }).then((res) => res),
+    create({ petitioner: PETITIONERS.movies, dataToSave }).then((res) => res),
   [ROUTES.countries]: async ({ dataToSave }) =>
-    createCountry({ dataToSave }).then((res) => res),
+    create({ petitioner: PETITIONERS.countries, dataToSave }).then(
+      (res) => res
+    ),
   [ROUTES.actors]: async ({ dataToSave }) =>
-    createActor({ dataToSave }).then((res) => res),
+    create({ petitioner: PETITIONERS.actors, dataToSave }).then((res) => res),
 };
 
 const serviceReadSelector = {
-  [ROUTES.directors]: async () => readDirectors().then((res) => res),
-  [ROUTES.genres]: async () => readGenres().then((res) => res),
-  [ROUTES.movies]: async () => readMovies().then((res) => res),
-  [ROUTES.countries]: async () => readCountries().then((res) => res),
-  [ROUTES.actors]: async () => readActors().then((res) => res),
+  [ROUTES.directors]: async () =>
+    read({ petitioner: PETITIONERS.directors }).then((res) => res),
+  [ROUTES.genres]: async () =>
+    read({ petitioner: PETITIONERS.genres }).then((res) => res),
+  [ROUTES.movies]: async () =>
+    read({ petitioner: PETITIONERS.movies }).then((res) => res),
+  [ROUTES.countries]: async () =>
+    read({ petitioner: PETITIONERS.countries }).then((res) => res),
+  [ROUTES.actors]: async () =>
+    read({ petitioner: PETITIONERS.actors }).then((res) => res),
 };
 
 const serviceUpdateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
-    updateDirector({ dataToSave }).then((res) => res),
+    update({ petitioner: PETITIONERS.directors, dataToSave }).then(
+      (res) => res
+    ),
   [ROUTES.genres]: async ({ dataToSave }) =>
-    updateGenre({ dataToSave }).then((res) => res),
+    update({ petitioner: PETITIONERS.genres, dataToSave }).then((res) => res),
   [ROUTES.movies]: async ({ dataToSave }) =>
-    updateMovie({ dataToSave }).then((res) => res),
+    update({ petitioner: PETITIONERS.movies, dataToSave }).then((res) => res),
   [ROUTES.countries]: async ({ dataToSave }) =>
-    updateCountry({ dataToSave }).then((res) => res),
+    update({ petitioner: PETITIONERS.countries, dataToSave }).then(
+      (res) => res
+    ),
   [ROUTES.actors]: async ({ dataToSave }) =>
-    updateActor({ dataToSave }).then((res) => res),
+    update({ petitioner: PETITIONERS.actors, dataToSave }).then((res) => res),
 };
 
 const serviceDeleteSelector = {
   [ROUTES.directors]: async ({ id }) =>
-    deleteDirector({ id }).then((res) => res),
-  [ROUTES.genres]: async ({ id }) => deleteGenre({ id }).then((res) => res),
-  [ROUTES.movies]: async ({ id }) => deleteMovie({ id }).then((res) => res),
+    remove({ petitioner: PETITIONERS.directors, id }).then((res) => res),
+  [ROUTES.genres]: async ({ id }) =>
+    remove({ petitioner: PETITIONERS.genres, id }).then((res) => res),
+  [ROUTES.movies]: async ({ id }) =>
+    remove({ petitioner: PETITIONERS.movies, id }).then((res) => res),
   [ROUTES.countries]: async ({ id }) =>
-    deleteCountry({ id }).then((res) => res),
-  [ROUTES.actors]: async ({ id }) => deleteActor({ id }).then((res) => res),
+    remove({ petitioner: PETITIONERS.countries, id }).then((res) => res),
+  [ROUTES.actors]: async ({ id }) =>
+    remove({ petitioner: PETITIONERS.actors, id }).then((res) => res),
 };
 
 export const createHandler = async ({
