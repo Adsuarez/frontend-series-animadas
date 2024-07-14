@@ -49,21 +49,16 @@ export default function Form({
 
   const save = async (event) => {
     event.preventDefault();
-    const isAllDataFilled = true;
     const data = Object.fromEntries(new FormData(event.target));
-
-    /*const isAllDataFilled = Object.values(data).every(
+    const isAllDataFilled = Object.values(data).every(
       (value) => value.length > 0
-    );*/
-
+    );
     if (isAllDataFilled) {
       setDataToSave({ ...dataToSave, ...data });
     }
-
     setShowForm(false);
   };
 
-  console.log({ group });
   return (
     <form
       action=""
@@ -84,7 +79,7 @@ export default function Form({
                   {group["director"] &&
                     group[SPANISH_TO_ENGLISH_FIELDS[column]].map((item) => {
                       return (
-                        <option key={item.id} value="">
+                        <option key={item.id} value={item.name}>
                           {item.name}
                         </option>
                       );
