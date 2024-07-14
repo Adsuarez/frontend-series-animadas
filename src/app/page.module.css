@@ -1,33 +1,49 @@
 .main {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  background-image: url("/all_cartoons.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 70dvh;
+  padding-inline: 1rem;
   align-items: center;
-  padding: 6rem;
-  position: relative;
 }
 
 .landing_image {
   position: absolute;
   top: 0px;
   right: 0px;
-  filter: drop-shadow(10px 10px 15px red);
+  width: 500px;
+  height: 376px;
 }
 
-.title_1 {
+.title_1,
+.title_2 {
   z-index: 1;
-  font-size: 8dvw;
-  text-align: left;
-  padding: 1rem 1rem 1rem 2rem;
-  filter: drop-shadow(16px 16px 15px red);
-  position: absolute;
-  left: 0px;
+  font-size: 10dvw;
+  height: fit-content;
+  backdrop-filter: invert(40%);
+}
+.title_1 {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: black;
 }
 
 .title_2 {
-  z-index: 1;
-  margin-top: 20dvh;
-  font-size: 10dvw;
-  text-align: left;
-  filter: drop-shadow(16px 16px 15px red);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+@media (width < 500px) {
+  .main {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+  }
+
+  .title_1,
+  .title_2 {
+    font-size: 20dvw;
+  }
 }
