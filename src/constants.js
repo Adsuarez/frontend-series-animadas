@@ -80,3 +80,19 @@ export const BUTTON_MESAGGES_PER_PAGE = {
   [ROUTES.actors]: "Nuevo actor",
   [ROUTES.movies]: "Nueva película",
 };
+
+export const TOAST_CREATE_MESSAGE = {
+  [ROUTES.directors]: "Nuevo director creado",
+  [ROUTES.genres]: "Nuevo género creado",
+  [ROUTES.countries]: "Nuevo país creado",
+  [ROUTES.actors]: "Nuevo actor creado",
+  [ROUTES.movies]: "Nueva película creada",
+};
+
+export const TOAST_UPDATE_MESSAGE = {
+  [ROUTES.directors]: "Director actualizado",
+  [ROUTES.genres]: "Género actualizado",
+  [ROUTES.countries]: "País actualizado",
+  [ROUTES.actors]: "Actor actualizado",
+  [ROUTES.movies]: "Película actualizada",
+};
