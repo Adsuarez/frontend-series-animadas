@@ -13,6 +13,7 @@ import {
   readCountries,
   updateCountry,
 } from "./countries";
+import { createActor, deleteActor, readActors, updateActor } from "./actors";
 
 const serviceCreateSelector = {
   [ROUTES.directors]: async ({ dataToSave }) =>
@@ -23,6 +24,8 @@ const serviceCreateSelector = {
     createMovie({ dataToSave }).then((res) => res),
   [ROUTES.countries]: async ({ dataToSave }) =>
     createCountry({ dataToSave }).then((res) => res),
+  [ROUTES.actors]: async ({ dataToSave }) =>
+    createActor({ dataToSave }).then((res) => res),
 };
 
 const serviceReadSelector = {
@@ -30,6 +33,7 @@ const serviceReadSelector = {
   [ROUTES.genres]: async () => readGenres().then((res) => res),
   [ROUTES.movies]: async () => readMovies().then((res) => res),
   [ROUTES.countries]: async () => readCountries().then((res) => res),
+  [ROUTES.actors]: async () => readActors().then((res) => res),
 };
 
 const serviceUpdateSelector = {
@@ -41,6 +45,8 @@ const serviceUpdateSelector = {
     updateMovie({ dataToSave }).then((res) => res),
   [ROUTES.countries]: async ({ dataToSave }) =>
     updateCountry({ dataToSave }).then((res) => res),
+  [ROUTES.actors]: async ({ dataToSave }) =>
+    updateActor({ dataToSave }).then((res) => res),
 };
 
 const serviceDeleteSelector = {
@@ -50,6 +56,7 @@ const serviceDeleteSelector = {
   [ROUTES.movies]: async ({ id }) => deleteMovie({ id }).then((res) => res),
   [ROUTES.countries]: async ({ id }) =>
     deleteCountry({ id }).then((res) => res),
+  [ROUTES.actors]: async ({ id }) => deleteActor({ id }).then((res) => res),
 };
 
 export const createHandler = async ({
