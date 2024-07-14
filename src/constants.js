@@ -47,6 +47,7 @@ export const FIELDS_PER_PAGE = {
     ENGLISH_TO_SPANISH_FIELDS.imageUrl,
     ENGLISH_TO_SPANISH_FIELDS.trailerUrl,
   ],
+  [ROUTES.countries]: [ENGLISH_TO_SPANISH_FIELDS.name],
 };
 
 //TODO: use english constans to construct this constant
@@ -63,6 +64,7 @@ export const KEYS_PER_PAGE = {
     "imageUrl",
     "trailerUrl",
   ],
+  [ROUTES.countries]: ["name"],
 };
 
 export const BUTTON_MESAGGES_PER_PAGE = {
