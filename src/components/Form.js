@@ -1,13 +1,12 @@
 import {
   FIELDS_PER_PAGE,
+  REUSABLE_FIELDS,
   ROUTES,
   SPANISH_TO_ENGLISH_FIELDS,
 } from "@/constants";
 import styles from "./form.module.css";
 import { useEffect, useState } from "react";
 import { readHandler } from "@/services/handlers";
-
-const REUSABLE_FIELDS = ["genre", "country", "actors", "director"];
 
 export default function Form({
   setShowForm,
