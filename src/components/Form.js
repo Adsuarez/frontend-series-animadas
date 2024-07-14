@@ -19,7 +19,9 @@ export default function Form({
   const [countries, setCountries] = useState([]);
   const [actors, setActors] = useState([]);
   const [group, setGroup] = useState({});
-
+  //TODO: create functionality to join name and lastname in actors to show better on form
+  //TODO: create multiple choise options on actors and corresponding array per movie
+  //TODO: create functionality to read row values on form to know wich value is going to be changed (better UX)
   useEffect(() => {
     readHandler({ pathname: ROUTES.directors, setList: setDirectors });
     readHandler({ pathname: ROUTES.genres, setList: setGenres });
