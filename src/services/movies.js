@@ -1,3 +1,4 @@
+//TODO: create function to replace automaticly with and height of all videos embeded from youtube
 let movies = [
   {
     id: "A",
@@ -16,8 +17,27 @@ let movies = [
 
 export const createMovie = async ({ dataToSave }) => {
   const id = crypto.randomUUID();
-  const { name } = dataToSave;
-  movies.push({ id, name });
+  const {
+    name,
+    genre,
+    country,
+    actors,
+    director,
+    review,
+    imageUrl,
+    trailerUrl,
+  } = dataToSave;
+  movies.push({
+    id,
+    name,
+    genre,
+    country,
+    actors,
+    director,
+    review,
+    imageUrl,
+    trailerUrl,
+  });
   return movies;
 };
 
@@ -26,9 +46,29 @@ export const readMovies = async () => {
 };
 
 export const updateMovie = async ({ dataToSave }) => {
-  const { id, name } = dataToSave;
+  const {
+    id,
+    name,
+    genre,
+    country,
+    actors,
+    director,
+    review,
+    imageUrl,
+    trailerUrl,
+  } = dataToSave;
   const index = movies.findIndex((movie) => movie.id === id);
-  movies[index] = { id, name };
+  movies[index] = {
+    id,
+    name,
+    genre,
+    country,
+    actors,
+    director,
+    review,
+    imageUrl,
+    trailerUrl,
+  };
   return movies;
 };
 
