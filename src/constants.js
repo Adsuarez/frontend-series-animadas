@@ -55,23 +55,39 @@ export const FIELDS_PER_PAGE = {
   ],
 };
 
-//TODO: use english constans to construct this constant
 export const KEYS_PER_PAGE = {
-  [ROUTES.directors]: ["name", "lastname", "country"],
-  [ROUTES.genres]: ["name"],
-  [ROUTES.movies]: [
-    "name",
-    "country",
-    "genre",
-    "actors",
-    "director",
-    "review",
-    "imageUrl",
-    "trailerUrl",
+  [ROUTES.directors]: [
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.name],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.lastname],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.country],
   ],
-  [ROUTES.countries]: ["name"],
-  [ROUTES.actors]: ["name", "lastname", "country"],
+  [ROUTES.genres]: [SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.name]],
+  [ROUTES.movies]: [
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.name],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.country],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.genre],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.actors],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.director],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.review],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.imageUrl],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.trailerUrl],
+  ],
+  [ROUTES.countries]: [
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.name],
+  ],
+  [ROUTES.actors]: [
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.name],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.lastname],
+    SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.country],
+  ],
 };
+
+export const REUSABLE_FIELDS = [
+  SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.genre],
+  SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.country],
+  SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.actors],
+  SPANISH_TO_ENGLISH_FIELDS[ENGLISH_TO_SPANISH_FIELDS.director],
+];
 
 export const BUTTON_MESAGGES_PER_PAGE = {
   [ROUTES.directors]: "Nuevo director",
