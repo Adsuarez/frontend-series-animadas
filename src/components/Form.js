@@ -22,22 +22,16 @@ export default function Form({
   const [group, setGroup] = useState({});
 
   useEffect(() => {
-    //readHandler({ pathname: ROUTES.directors, setList: setDirectors });
-    //readHandler({ pathname: ROUTES.genres, setList: setGenres });
-    //readHandler({ pathname: ROUTES.countries, setList: setCountries });
-    //readHandler({ pathname: ROUTES.actors, setList: setActors });
-
-    readHandler({ pathname: ROUTES.directors, setList: setDirectors }).then(
-      () =>
-        readHandler({ pathname: ROUTES.genres, setList: setGenres }).then(() =>
-          setGroup({
-            ["director"]: directors,
-            ["genre"]: genres,
-            ["country"]: countries,
-            ["actors"]: actors,
-          })
-        )
-    );
+    readHandler({ pathname: ROUTES.directors, setList: setDirectors });
+    readHandler({ pathname: ROUTES.genres, setList: setGenres });
+    readHandler({ pathname: ROUTES.countries, setList: setCountries });
+    readHandler({ pathname: ROUTES.actors, setList: setActors });
+    setGroup({
+      ["director"]: directors,
+      ["genre"]: genres,
+      ["country"]: countries,
+      ["actors"]: actors,
+    });
   }, [directors, genres, countries, actors]);
 
   const columns = FIELDS_PER_PAGE[pathname];
