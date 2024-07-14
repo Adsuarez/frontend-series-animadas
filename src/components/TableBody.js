@@ -1,5 +1,5 @@
 import styles from "./table.module.css";
-import { KEYS_PER_PAGE } from "@/constants";
+import { IMAGES_HOSTNAME, KEYS_PER_PAGE } from "@/constants";
 import { deleteHandler } from "@/services/handlers";
 import Image from "next/image";
 
@@ -22,12 +22,14 @@ export default function TableBody({
               return (
                 <td key={column} className={styles.td}>
                   {item.imageUrl && column === "imageUrl" ? (
-                    <Image
-                      alt={`portada de la película ${item.name}`}
-                      width={106}
-                      height={139}
-                      src={item.imageUrl}
-                    />
+                    item.imageUrl.startsWith(IMAGES_HOSTNAME) && (
+                      <Image
+                        alt={`portada de la película ${item.name}`}
+                        width={106}
+                        height={139}
+                        src={item.imageUrl}
+                      />
+                    )
                   ) : item.trailerUrl && column === "trailerUrl" ? (
                     <div
                       className={styles.trailer}
