@@ -112,3 +112,13 @@ export const TOAST_UPDATE_MESSAGE = {
   [ROUTES.actors]: "Actor actualizado",
   [ROUTES.movies]: "Película actualizada",
 };
+
+export const PETITIONERS = {
+  genres: "genres",
+  countries: "countries",
+  directors: "directors",
+  actors: "actors",
+  movies: "movies",
+};
+
+export const IMAGES_HOSTNAME = "https://images.moviesanywhere.com/";
