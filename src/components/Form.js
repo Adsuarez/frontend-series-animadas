@@ -77,7 +77,7 @@ export default function Form({
               {REUSABLE_FIELDS.some(
                 (field) => field === SPANISH_TO_ENGLISH_FIELDS[column]
               ) ? (
-                <select name={SPANISH_TO_ENGLISH_FIELDS[column]}>
+                <select name={SPANISH_TO_ENGLISH_FIELDS[column]} required>
                   <option value="">--Seleccione una opción--</option>
                   {group["director"] &&
                     group[SPANISH_TO_ENGLISH_FIELDS[column]].map((item) => {
@@ -89,7 +89,11 @@ export default function Form({
                     })}
                 </select>
               ) : (
-                <input type="text" name={SPANISH_TO_ENGLISH_FIELDS[column]} />
+                <input
+                  type="text"
+                  name={SPANISH_TO_ENGLISH_FIELDS[column]}
+                  required
+                />
               )}
             </label>
           </div>
