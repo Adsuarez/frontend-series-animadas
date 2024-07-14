@@ -48,6 +48,11 @@ export const FIELDS_PER_PAGE = {
     ENGLISH_TO_SPANISH_FIELDS.trailerUrl,
   ],
   [ROUTES.countries]: [ENGLISH_TO_SPANISH_FIELDS.name],
+  [ROUTES.actors]: [
+    ENGLISH_TO_SPANISH_FIELDS.name,
+    ENGLISH_TO_SPANISH_FIELDS.lastname,
+    ENGLISH_TO_SPANISH_FIELDS.country,
+  ],
 };
 
 //TODO: use english constans to construct this constant
@@ -65,6 +70,7 @@ export const KEYS_PER_PAGE = {
     "trailerUrl",
   ],
   [ROUTES.countries]: ["name"],
+  [ROUTES.actors]: ["name", "lastname", "country"],
 };
 
 export const BUTTON_MESAGGES_PER_PAGE = {
