@@ -1,8 +1,6 @@
-let actors = [
-  { id: "A", name: "camilo", lastname: "iniesta", country: "españa" },
-  { id: "B", name: "guillermo", lastname: "del toro", country: "mexico" },
-  { id: "C", name: "adam", lastname: "sandler", country: "estados unidos" },
-];
+import storage from "./storage";
+
+let { actors } = storage;
 
 export const createActor = async ({ dataToSave }) => {
   const id = crypto.randomUUID();

@@ -1,8 +1,6 @@
-let directors = [
-  { id: "A", name: "pepito", lastname: "perez", country: "colombia" },
-  { id: "B", name: "paco", lastname: "rubio", country: "peru" },
-  { id: "C", name: "pedro", lastname: "guaca", country: "mexico" },
-];
+import storage from "./storage";
+
+let { directors } = storage;
 
 export const createDirector = async ({ dataToSave }) => {
   const id = crypto.randomUUID();

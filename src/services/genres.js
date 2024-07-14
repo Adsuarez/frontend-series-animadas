@@ -1,8 +1,6 @@
-let genres = [
-  { id: "A", name: "comedia" },
-  { id: "B", name: "terror" },
-  { id: "C", name: "aventura" },
-];
+import storage from "./storage";
+
+let { genres } = storage;
 
 export const createGenre = async ({ dataToSave }) => {
   const id = crypto.randomUUID();

@@ -1,8 +1,6 @@
-let countries = [
-  { id: "A", name: "estados unidos" },
-  { id: "B", name: "mexico" },
-  { id: "C", name: "japon" },
-];
+import storage from "./storage";
+
+let { countries } = storage;
 
 export const createCountry = async ({ dataToSave }) => {
   const id = crypto.randomUUID();
